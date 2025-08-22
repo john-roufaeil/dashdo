@@ -1,19 +1,35 @@
 import type { Config } from "tailwindcss";
 
-const config: Config = {
-  darkMode: "class", // enables dark mode toggle via "class"
-  content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
+export default {
+  content: [
+    "./src/components/layout/Header.tsx",
+    "./**/*.{ts,tsx,js,jsx}",
+    "./components/**/*.{ts,tsx,js,jsx}",
+    "./app/**/*.{ts,tsx,js,jsx}",
+    "./src/**/*.{ts,tsx,js,jsx}",
+  ],
+  prefix: "",
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       colors: {
-        primary: {
-          DEFAULT: "#2563EB", // blue-600
-          light: "#3B82F6", // blue-500
-          dark: "#1E40AF", // blue-800
-        },
+        primary: "#034748",
+        secondary: "#f5dfbb",
+        outline: "#EFEBE7",
+        bg: "#EFEBE7",
+        text: "#EFEBE7",
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
     },
   },
-  plugins: [],
-};
-export default config;
+} satisfies Config;
