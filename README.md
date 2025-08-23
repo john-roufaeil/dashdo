@@ -1,36 +1,215 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DashDo
 
-## Getting Started
+A simple full-stack application that combines **analytics dashboards** with a **task manager**.  
+Built with **Next.js**, **TailwindCSS**, and a lightweight in-memory API.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Running Locally
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- pnpm or npm/yarn
+
+Steps
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/john-roufaeil/dashdo.git
+    ```
+
+    ```bash
+    cd dashdo
+    ```
+
+2. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3. Run the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+4. Open in your browser:
+
+    ```http://localhost:3000```
+
+🌐 Deployed Version
+
+You can try the live app here:
+👉 [dashdo.vercel.app](dashdo.vercel.app)
+
+## 🛠 Tech Stack
+
+Frontend: Next.js, React, TailwindCSS, Recharts
+
+Backend API: Next.js API routes (Node.js + in-memory JSON)
+
+Deployment: Vercel
+
+## 📌 API Endpoints
+
+### I. Get All Todos
+
+Request: ```GET /api/tasks```
+
+Response Example:
+
+```json
+[
+  {
+    "id": 23482739450291,
+    "title": "Buy groceries",
+    "description": "Milk, Bread, Eggs",
+    "completed": false
+  }
+  {
+    "id": 1755939453718,
+    "title": "Write README",
+    "description": "Write steps of running",
+    "completed": true
+  }
+]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### II. Get Single Todo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Request: ```GET /api/tasks/:id```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Request Example: ```GET /api/tasks/1755939453718```
 
-## Learn More
+Response Example:
 
-To learn more about Next.js, take a look at the following resources:
+```json
+{
+    "todo": {
+        "id": 1755939453718,
+        "title": "Write README",
+        "description": "Write steps of running",
+        "completed": false
+    }
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Invalid Request Example: ```GET /api/tasks/-1```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Invalid Response Example:
 
-## Deploy on Vercel
+```json
+{
+    "error": "Todo not found"
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### III. Create Todo
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Request: ```POST /api/tasks```
+
+Request Body Example:
+
+```json
+{
+    "title": "Do dishes",
+    "description": "Clean all remaining dishes"
+}
+```
+
+Response Example:
+
+```json
+{
+    "todo": {
+        "id": 1755941399531,
+        "title": "Do dishes",
+        "description": "Clean all remaining dishes",
+        "completed": false
+    }
+}
+```
+
+Invalid Request Body Example:
+
+```json
+{
+    "description": "Clean all remaining dishes"
+}
+```
+
+Invalid Response Example:
+
+```json
+{
+    "error": "Title is required"
+}
+```
+
+### IV. Update Todo
+
+Request: ```PUT /api/tasks/:id```
+
+Request Example: ```PUT /api/tasks/1755931240150```
+
+Request Body Example:
+
+```json
+{
+  "title": "Finish homework",
+  "description": "Math, Physics, and Chemistry"
+}
+```
+
+Response Body Example:
+
+```json
+{
+    "todo": {
+        "id": 1755931240150,
+        "title": "Finish homework",
+        "description": "Math, Physics, and Chemistry",
+        "completed": false
+    }
+}
+````
+
+Request Example: ```PUT /api/tasks/1755931240150```
+
+Request Body Example:
+
+```json
+{
+  "completed": true
+}
+```
+
+Response Body Example:
+
+```json
+{
+    "todo": {
+        "id": 1755931240150,
+        "title": "Finish homework",
+        "description": "Math, Physics, and Chemistry",
+        "completed": true
+    }
+}
+````
+
+### V. Delete Todo
+
+Request: ```DELETE /api/tasks/:id```
+
+Request Example: ```DELETE /api/tasks/1755942104225```
+
+Response Example: 
+
+```json
+{
+    "success": true
+}
+```
