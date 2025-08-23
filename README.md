@@ -206,7 +206,7 @@ Request: ```DELETE /api/tasks/:id```
 
 Request Example: ```DELETE /api/tasks/1755942104225```
 
-Response Example: 
+Response Example:
 
 ```json
 {
