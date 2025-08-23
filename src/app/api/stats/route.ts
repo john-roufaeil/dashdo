@@ -5,10 +5,12 @@ export async function GET(req: Request) {
 
   const days = parseInt(searchParams.get("days") || "30", 10);
   const dailyActiveUsers = Array.from({ length: days }, (_, i) => {
+    const dateObj = new Date(Date.now() - (days - i - 1) * 24 * 60 * 60 * 1000);
+    const day = String(dateObj.getDate()).padStart(2, "0");
+    const month = String(dateObj.getMonth() + 1).padStart(2, "0");
+    const year = dateObj.getFullYear();
     return {
-      date: new Date(Date.now() - (days - i - 1) * 24 * 60 * 60 * 1000)
-        .toISOString()
-        .split("T")[0],
+      date: `${day}/${month}/${year}`,
       users: Math.floor(Math.random() * 500) + 50,
     };
   });
