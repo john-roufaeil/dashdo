@@ -43,7 +43,7 @@ export default function BarChartDaily() {
     }, [filter]);
 
     return (
-        <div className="p-6 bg-white shadow-md rounded-2xl w-11/12 sm:w-1/3 border-2 m-2 border-slate-100">
+        <div className="p-6 bg-white shadow-md rounded-2xl w-11/12 md:w-1/2 border-2 m-2 border-slate-100">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-lg font-semibold">Daily Active Users</h2>
                 <select

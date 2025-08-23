@@ -10,11 +10,11 @@ export default function Home() {
             <p className="text-gray-600">
                 Your all-in-one stats and todos app.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 w-full mx-auto items-center justify-center">
+            <div className="flex flex-col md:flex-row gap-6 mx-auto items-center justify-center w-11/12 md:w-2/3">
                 <BarChartDaily />
                 <PieChartDemographics />
             </div>
-            <div className="w-11/12 sm:w-2/3">
+            <div className="rounded-2xl w-11/12 md:w-2/3 mx-20">
                 <TodoList />
             </div>
         </main>

@@ -11,7 +11,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         return (
             <button
                 className={clsx(
-                    "rounded-xl font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-orange-400 disabled:opacity-50 disabled:pointer-events-none",
+                    "hover:cursor-pointer rounded-xl font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-orange-400 disabled:opacity-50 disabled:pointer-events-none",
                     {
                         "bg-orange-500 text-white hover:bg-orange-600": variant === "default",
                         "border border-gray-300 hover:bg-gray-100": variant === "outline",
