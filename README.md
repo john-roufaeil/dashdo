@@ -43,7 +43,9 @@ Steps
 🌐 Deployed Version
 
 You can try the live app here:
-👉 [dashdo.vercel.app](dashdo.vercel.app)
+[dashdo.vercel.app](dashdo.vercel.app)  
+
+Note: the todo app uses in-memory file to store the tasks. Modifying the todo tasks will crash on the live app.
 
 ## 🛠 Tech Stack
 
